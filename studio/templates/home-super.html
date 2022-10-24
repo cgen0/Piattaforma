@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% load static %}
+  {% load get_item_tag %}
+  {% load get_checked_tag %}
+
+  <link rel="manifest" href="{% static 'manifest.json' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/table.css' %}">
+  <meta name="theme-color" content="#493174">
+  <link rel="apple-touch-icon" href="{% static 'icons/aurss.192x192.png' %}">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
+  <script  src="https://kit.fontawesome.com/b67ebee795.js" crossorigin="anonymous"></script>
+  <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script  src="{% static 'js/home.js' %}"></script>
+
+
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <ul class="navbar-nav">
+      <li class="logo">
+        <div class="nav-link-logo" id="logo">
+          <span class="link-text logo-text">LOGO</span>
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fad"
+            data-icon="angle-double-right"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+            class="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x"
+          >
+            <g class="fa-group">
+              <path
+                fill="currentColor"
+                d="M224 273L88.37 409a23.78 23.78 0 0 1-33.8 0L32 386.36a23.94 23.94 0 0 1 0-33.89l96.13-96.37L32 159.73a23.94 23.94 0 0 1 0-33.89l22.44-22.79a23.78 23.78 0 0 1 33.8 0L223.88 239a23.94 23.94 0 0 1 .1 34z"
+                class="fa-secondary"
+              ></path>
+              <path
+                fill="currentColor"
+                d="M415.89 273L280.34 409a23.77 23.77 0 0 1-33.79 0L224 386.26a23.94 23.94 0 0 1 0-33.89L320.11 256l-96-96.47a23.94 23.94 0 0 1 0-33.89l22.52-22.59a23.77 23.77 0 0 1 33.79 0L416 239a24 24 0 0 1-.11 34z"
+                class="fa-primary"
+              ></path>
+            </g>
+          </svg>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <div class="nav-link active" id="home" >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fad"
+            data-icon="cat"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            class="svg-inline--fa fa-cat fa-w-16 fa-9x"
+            style="pointer-events: none;"
+
+          >
+            <g class="fa-group">
+              <path
+                fill="currentColor"
+
+                 d="M 443.75,113.29
+                   C 443.75,113.29 220.69,113.29 220.69,113.29
+                     220.69,113.29 176.55,51.50 176.55,51.50
+                     176.55,51.50 15.29,51.50 15.29,51.50
+                     6.85,51.50 0.00,58.34 0.00,66.79
+                     0.00,66.79 0.00,443.97 0.00,443.97
+                     0.61,443.99 1.22,444.03 1.81,444.06
+                     1.81,444.06 90.22,202.95 90.22,202.95
+                     91.84,196.92 97.31,192.74 103.55,192.74
+                     103.55,192.74 459.03,192.74 459.03,192.74
+                     459.03,192.74 459.03,128.58 459.03,128.58
+                     459.03,120.13 452.18,113.29 443.75,113.29 Z"
+                class="fa-secondary"
+              ></path>
+              <path
+                fill="currentColor"
+                d="M 408.93,466.40
+                   C 408.93,466.40 13.82,466.40 13.82,466.40
+                     4.72,466.40 -1.89,457.76 0.49,448.98
+                     0.49,448.98 90.23,202.95 90.23,202.95
+                     91.85,196.93 97.32,192.74 103.56,192.74
+                     103.56,192.74 498.67,192.74 498.67,192.74
+                     507.76,192.74 512.00,201.43 512.00,210.16
+                     512.00,210.16 422.26,456.19 422.26,456.19
+                     420.63,462.21 415.17,466.40 408.93,466.40
+                     408.93,466.40 408.93,466.40 408.93,466.40 Z"
+                class="fa-primary"
+              ></path>
+            </g>
+          </svg>
+          <span class="link-text" style="pointer-events: none;">Home</span>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <div class="nav-link" id="settings">
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fad"
+            data-icon="alien-monster"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            class="svg-inline--fa fa-alien-monster fa-w-18 fa-9x"
+            style="pointer-events: none;"
+
+          >
+            <g class="fa-group">
+              <path
+                fill="currentColor"
+                d="M 459.66,434.36
+           C 459.66,434.41 459.66,434.46 459.66,434.53
+             406.57,482.67 336.10,512.00 258.80,512.00
+             181.49,512.00 111.01,482.67 57.93,434.53
+             57.93,434.46 57.93,434.41 57.93,434.36
+             57.93,354.29 104.78,285.17 172.56,252.91
+             198.03,278.32 227.86,292.01 258.80,292.01
+             289.75,292.01 319.57,278.32 345.05,252.91
+             412.83,285.17 459.66,354.29 459.66,434.36
+             459.66,434.36 459.66,434.36 459.66,434.36 Z"
+                class="fa-secondary"
+              ></path>
+              <path
+                fill="currentColor"
+                d="M 258.80,0.00
+           C 320.16,0.00 369.91,49.74 369.91,111.10
+             369.91,172.47 320.16,256.39 258.80,256.39
+             197.44,256.39 147.69,172.47 147.69,111.10
+             147.69,49.74 197.44,0.00 258.80,0.00 Z"
+                class="fa-primary"
+              ></path>
+            </g>
+          </svg>
+          <span class="link-text" style="pointer-events: none;">Utente</span>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+
+        <div class="limiter" id="limiter">
+          
+          <div id="home-page" class="page slide-left-center">
+   <div class="container-filter100">
+   <div class="top-row">
+   <input class="filter" type="text" id="filter_input" onkeyup="tableFilter()" placeholder="Filtra...">
+
+   <button type="button" class="add button fas fa-plus" onClick=addOpen() ></button> 
+   </div>
+   </div>
+   <div class="container-table100">
+            <div class="wrap-table100">
+
+                <div id="table" class="table">
+
+                  <div class="row header">
+                    <div class="cell cell-header">
+                      Numero
+                    </div>
+                    <div class="cell cell-header">
+                      Nome
+                    </div>
+                  </div>
+
+                  {% for item in objs %}
+
+                  <div class="row main-row" id={{item.pratica}} onClick="detailOpen(this)">
+                  <div class="cell cell-main" data-title="Numero Pratica">{{item.pratica}}</div>
+                  <div class="cell cell-main" data-title="Nome">{{item.nome}}</div>
+                  </div>
+                  {% endfor %}
+
+
+            </div>
+         </div>
+      </div>
+   </div>
+   <div id="detail-page" class="slide-center-right page hidden">
+   <div class="container-filter100">
+   <div class="top-row-detail">
+   <button type="button" class="back button fas fa-chevron-left" onClick="detailClose()" ></button>
+   <div class="button-container edit-container">
+   <button type="button" id="delete-button" class="delete button fas fa-trash-alt" onClick="" ></button>
+   <button type="button" class="edit button fas fa-pen" onClick="editForm()" ></button>
+   </div>
+      </div>
+
+   </div>
+   <div class="container-table100" id="detail-form">
+    <form id="post-form" method="post" class="wrap-table100">
+    					{% csrf_token %}
+
+          {% for item in objs %}
+          <div class="table table-detail" id="{{item.pratica}}-detail" >
+          {% for field in fields %}
+           <div class="row row-detail">
+             <div class="cell cell-detail title" for="{{ field.name }}">{{ field.name }}</div> 
+             <div class="cell cell-detail" >
+             <input id="{{ field.name }}" class="edit-input" type="text" name="{{ field.name }}" value="{% get_item item field %}" >
+             </div>
+
+           </div>
+          {% endfor %}
+          </div>
+          {% endfor %}
+          <div id="button-row-add" class="row button-row" style="display:none">
+                    <div class="button-container">
+
+           <button type="button" class="cancel button" onClick="cancelEdit()" >Annulla</button> 
+
+          <input type="submit" value="Conferma" class="submit button">
+</div>
+          <div id="results"></div> <!-- errors go here -->
+          </div>
+
+    </form>
+    </div>
+    </div>
+
+   <div id="add-page" class="slide-center-right page hidden">
+   <div class="container-filter100">
+   <div class="top-row-detail">
+   <button type="button" class="back button fas fa-chevron-left" onClick="addClose()" ></button> 
+   </div>
+   </div>
+   <div class="container-table100" >
+   <form id="post-form-add" method="post" class="wrap-table100">
+
+   {% csrf_token %}
+   <div class="table table-add " id="new" >
+          {% for field in fields %}
+          <div class="row row-detail">
+          <div class="cell cell-detail title" for="{{ field.name }}">{{ field.name }}</div> 
+          <div class="cell cell-detail" data-title="">
+          <input id="{{ field.name }}" class="add-input" type="text" name="{{ field.name }}" value="" >
+          </div>
+
+          </div>
+          {% endfor %}
+                    </div>
+
+          <div class="row button-row" style="display:table">
+                    <div class="button-container">
+
+           <button type="button" class="cancel cancel-add button" onClick="addClose()" >Annulla</button> 
+
+          <input type="submit" value="Conferma" class="submit button">
+          </div>
+          <div id="results2"></div> <!-- errors go here -->
+    </div>
+
+          </form>
+
+
+    </div>
+    </div>
+
+          
+          
+          <div id="settings-page" class="slide-left-center page hidden">
+   <div class="container-settings100">
+            <div class="wrap-settings100">
+            <div class="settings">
+                <div  class="top-profile"> Gestione Utente </div>
+
+            <div class="settings-list">
+                <div  class="settings-row row">
+                  <div class="cell settings-cell" id="change-username" onClick=openUsernamePage() >Cambia Username</div>
+                </div>
+                <div  class="settings-row row">
+                  <div class="cell settings-cell" id="change-password" onClick=openPasswordPage() >Cambia Password</div>
+                </div>
+                <div  class="settings-row row">
+                  <div class="cell settings-cell" id="guest-options" onClick=openUsersPage()>Gestisci Ospiti</div>
+                </div>
+                <div  class="settings-row row">
+
+                  <a href="{% url 'logout' %}" class="cell settings-cell logout">Logout</a>
+                </div>
+
+            </div>
+                        </div>
+                        </div>
+
+         </div>
+   </div>
+   <div id="password-page" class="slide-center-right page hidden">
+
+   <div class="container-table100" id="add-form">
+
+   <form id="post-form-password" method="post" class="wrap-table100">
+   <div  class="top-profile"> Cambia Password</div>
+
+   {% csrf_token %}
+   <div class="table table-password " >
+
+
+          <div class="row settings">
+          <div class="cell cell-detail  settings" for="old-password">Password attuale</div> 
+          <div class="cell cell-detail settings" data-title="">
+          <input id="old-pass" class="old password-input " type="password" value="" >
+          </div>
+          </div>
+          <div class="row settings">
+          <div class="cell cell-detail  settings" for="new-password">Nuova password</div> 
+          <div class="cell cell-detail settings" data-title="">
+          <input id="new-pass" class="new password-input" type="password" value="" >
+          </div>
+          </div>
+                    </div>
+
+          <div class="row button-row" style="display:table">
+                    <div class="button-container">
+
+           <button type="button" class="cancel cancel-add button" onClick="passwordClose()" >Annulla</button> 
+
+          <input type="submit" value="Conferma" class="submit button"></button>
+          </div>
+          <div id="results1"></div> <!-- errors go here -->
+        </div>
+
+          </form>
+
+
+    </div>
+    </div>
+
+
+   <div id="username-page" class="slide-center-right page hidden">
+
+   <div class="container-table100" >
+
+   <form id="post-form-username" method="post" class="wrap-table100">
+   <div  class="top-profile"> Cambia Username</div>
+
+   {% csrf_token %}
+   <div class="table table-username " >
+
+
+          <div class="row settings">
+          <div class="cell cell-detail  settings" for="new-username">Username</div> 
+          <div class="cell cell-detail settings" data-title="">
+          <input id="new-username" class="new username-input" type="text" value="{{ username }}" >
+          </div>
+          </div>
+
+                    </div>
+
+          <div class="row button-row" style="display:table">
+                    <div class="button-container">
+
+           <button type="button" class="cancel cancel-add button" onClick="usernameClose()" >Annulla</button> 
+
+          <input type="submit" value="Conferma" class="submit button"></button>
+          </div>
+          <div id="resukkklts"></div> <!-- errors go here --> 
+    </div>
+
+          </form>
+
+
+
+    </div>
+    </div>
+   <div id="users-page" class="slide-left-center page hidden">
+   <div class="container-table100">
+            <div class="wrap-table100">
+
+   <div  class="top-profile">Gestione Ospiti</div>
+                <div id="table-guests" class="table table-password">
+
+                  <div class="row settings title">
+                  <div class="cell cell-detail settings title">Utente</div>
+                  <div class="cell cell-detail settings title">Pratiche</div>
+                  </div>
+                  {% for item in users %}
+
+                  <div class="row settings-row" id={{item.id}} onClick="detailUserOpen(this)">
+                  <div class="cell cell-detail " data-title="Nome">{{item.username}}</div>
+                  <div class="cell cell-detail  bubbles" id="bubble-list" data-title="Pratiche">
+                  <div class="bubble-container" id="bubble-container" >
+
+                  {% for pr in item.accesso %}
+                  <div class="bubble pratica" id={{item.id}}-bubble-{{pr.pratica}} >{{pr.pratica}}</div>
+
+                  {% endfor %}
+
+                  </div>
+                                        </div>
+
+                                    {% endfor %}
+          </div>
+                            </div>
+
+
+                   <div class="row button-row" style="display:table">
+                    <div class="button-container">
+           <button type="button" class="add button submit" onClick="addGuestOpen()" >Nuovo Ospite</button>
+
+
+
+
+            </div>
+         </div>
+         </div>
+         </div>
+         </div>
+
+   <div id="add-user-page" class="slide-center-right page hidden">
+   <div class="container-filter100">
+   <div class="top-row-detail">
+   <button type="button" class="back button fas fa-chevron-left" onClick="addGuestClose()" ></button>
+   </div>
+   </div>
+   <div class="container-table100" >
+   <form id="post-form-add-user" method="post" class="wrap-table100">
+
+   {% csrf_token %}
+   <div class="table table-add " id="new-guest" >
+          <div class="row row-detail">
+          <div class="cell cell-detail title" for="username">Username</div>
+          <div class="cell cell-detail" data-title="">
+          <input id="username-new-guest" class="add-input" type="text" name="username" value="" >
+          </div>
+
+          </div>
+        <div class="row row-detail">
+          <div class="cell cell-detail title" for="password">Password</div>
+          <div class="cell cell-detail" data-title="">
+          <input id="password-new-guest" class="add-input" type="text" name="password" value="" >
+          </div>
+
+          </div>
+                    </div>
+
+          <div class="row button-row" style="display:table">
+                    <div class="button-container">
+
+           <button type="button" class="cancel cancel-add button" onClick="addUserClose()" >Annulla</button>
+
+          <input type="submit" value="Conferma" class="submit button">
+          </div>
+          <div id="results23"></div> <!-- errors go here -->
+    </div>
+
+          </form>
+
+
+    </div>
+    </div>
+
+   <div id="details-user-page" class="slide-left-center page hidden">
+
+        {% for item in users %}
+
+                <div class="container-table100">
+                <form id="edit-guest" method="post"  class="wrap-table100">
+                    					{% csrf_token %}
+
+                <div  class="top-profile">{{item.username}}</div>
+                <div id={{item.id}}-user-detail guest={{item.id}} class="table table-users-detail table-password" checked={% get_checked item %} >
+
+                  <div class="row settings title">
+                  <div class="cell cell-detail settings title">Numero</div>
+                  <div class="cell cell-detail settings title">Nome</div>
+                  <div class="cell cell-detail settings title check-title">Accesso</div>
+
+                  </div>
+                  {% for pra in objs %}
+
+                  <div class="row main-row check-row" id={{pra.pratica}}-user-submenu >
+                  <div class="cell cell-detail" data-title="Numero Pratica">{{pra.pratica}}</div>
+                  <div class="cell cell-detail" data-title="Nome">{{pra.nome}}</div>
+                  <div class="cell cell-detail cell-check" data-title="Accesso">
+                    <input id=checkbox-{{pra.pratica}} class="checkbox" data-pratica={{pra.pratica}} user={{item.id}} type="checkbox" data-title="Accesso">
+                  </div>
+                  </div>
+
+                  {% endfor %}
+
+
+
+                  </div>
+
+
+                   <div class="row button-row" style="display:table">
+                    <div class="button-container">
+           <input type="submit"  class="add button submit" value="Conferma">
+
+          </div>
+
+            </div>
+
+                </form>
+            </div>
+         </div>
+        {% endfor %}
+
+
+  </main>
+</body>
+<script  src="{% static 'js/post.js' %}"></script>
+
+</html>
